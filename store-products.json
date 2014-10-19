@@ -11,7 +11,11 @@
 		"images/gem-05.gif",
 		"images/gem-09.gif"
 	],
-	"reviews": []
+	"reviews": [ {
+		"stars": 5,
+		"body": "i love this gem!",
+		"author": "foo@bar.com"
+	}]
 }, {
 	"name": "Bloodstone",
 	"description": "Origin of the Bloodstone is unknown, hence its low value. It has a very high shine and 12 sides, however.",

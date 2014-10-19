@@ -3,24 +3,36 @@
 	app.directive("productDescription", function() {
 		return {
 			restrict: 'E',
+			scope: {
+				item: "="
+			},
 			templateUrl: "product-description.html"
 		};
 	});
 	app.directive("productReviews", function() {
 		return {
 			restrict: 'E',
+			scope: {
+				reviewedProduct: "="
+			},
 			templateUrl: "product-reviews.html"
 		};
 	});
 	app.directive("productSpecs", function() {
 		return {
 			restrict: "A",
+			scope: {
+				item: "="
+			},
 			templateUrl: "product-specs.html"
 		};
 	});
 	app.directive("productTabs", function() {
 		return {
 			restrict: "E",
+			scope: {
+				tabbedProduct: "="
+			},
 			templateUrl: "product-tabs.html",
 			controller: function() {
 				this.tab = 1;

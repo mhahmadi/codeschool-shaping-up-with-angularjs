@@ -24,7 +24,17 @@
 				<product-gallery></product-gallery>
 
 				<!-- Product Tabs  -->
-				<product-tabs tabbed-product="product"></product-tabs>
+				<tab-group>
+					<tab title="Description">
+						<product-description item="product"></product-description>
+					</tab>
+					<tab title="Specs">
+						<div product-specs item="product"></div>
+					</tab>
+					<tab title="Reviews">
+						<product-reviews reviewed-product="product"></product-reviews>
+					</tab>
+				</tab-group>
 			</div>
 		</div>
 	</body>

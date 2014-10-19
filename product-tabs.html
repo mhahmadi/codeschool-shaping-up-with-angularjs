@@ -1,24 +1,8 @@
-<!-- Tabs Go Here -->
 <section>
 	<ul class="nav nav-pills">
-		<li ng-class="{ active:tab.isSet(1) }">
-			<a href ng-click="tab.setTab(1)">Description</a>
-		</li>
-		<li ng-class="{ active:tab.isSet(2) }">
-			<a href ng-click="tab.setTab(2)">Specs</a>
-		</li>
-		<li ng-class="{ active:tab.isSet(3) }">
-			<a href ng-click="tab.setTab(3)">Reviews</a>
+		<li ng-repeat="tab in tabs" ng-class="{ active:tab.selected }">
+			<a href ng-click="tabGroup.select(tab)">{{tab.title}}</a>
 		</li>
 	</ul>
-
-	<!--  Description Tab's Content  -->
-	<product-description item="tabbedProduct" ng-show="tab.isSet(1)" ></product-description>
-
-	<!--  Spec Tab's Content  -->
-	<div product-specs item="tabbedProduct" ng-show="tab.isSet(2)"></div>
-
-	<!--  Review Tab's Content  -->
-	<product-reviews reviewed-product="tabbedProduct" ng-show="tab.isSet(3)"></product-reviews>
-
+	<div ng-transclude=''></div>
 </section>

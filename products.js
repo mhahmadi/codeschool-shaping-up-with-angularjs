@@ -27,23 +27,40 @@
 			templateUrl: "product-specs.html"
 		};
 	});
-	app.directive("productTabs", function() {
+	app.directive("tabGroup", function() {
+		return {
+			restrict: "E",
+			transclude: true,
+			templateUrl: "product-tabs.html",
+			controller: function($scope) {
+				$scope.tabs = [];
+				this.addTab = function(tab) {
+					if($scope.tabs.length === 0) {
+						tab.selected = true;
+					}
+					$scope.tabs.push(tab);
+				};
+				this.select = function(selectedTab) {
+					angular.forEach($scope.tabs, function(tab) {
+						tab.selected = angular.equals(tab, selectedTab);
+					});
+				}
+			},
+			controllerAs: "tabGroup"
+		};
+	});
+	app.directive("tab", function() {
 		return {
 			restrict: "E",
 			scope: {
-				tabbedProduct: "="
+				title: "@"
 			},
-			templateUrl: "product-tabs.html",
-			controller: function() {
-				this.tab = 1;
-				this.isSet = function(checkTab) {
-					return this.tab === checkTab;
-				};
-				this.setTab = function(activeTab) {
-					this.tab = activeTab || 1;
-				};
-			},
-			controllerAs: "tab"
+			transclude: true,
+			template: "<div ng-show='selected' ng-transclude=''></div>",
+			require: "^tabGroup",
+			link: function(scope, element, attrs, ctrl) {
+				ctrl.addTab(scope);
+			}
 		};
 	});
 	app.directive("productGallery", function() {
